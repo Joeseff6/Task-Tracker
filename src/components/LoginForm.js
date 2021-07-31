@@ -1,7 +1,13 @@
 import Button from "./Button";
 import { Link } from 'react-router-dom';
+import { useState } from "react";
 
 const LoginForm = () => {
+  const [ loginForm, setLoginForm] = useState({
+    username: '',
+    password: '',
+  });
+
   return (
     <div className="row justify-content-center">
       <div className="col-sm-6 signupContainer">
@@ -14,6 +20,7 @@ const LoginForm = () => {
                 className="form-control"
                 id="floatingUsername"
                 placeholder="user123"
+                onChange={(e) => setLoginForm({...loginForm, username: e.target.value})}
                 required
               />
               <label htmlFor="floatingUsername">Username</label>
@@ -24,6 +31,7 @@ const LoginForm = () => {
                 className="form-control"
                 id="floatingPassword"
                 placeholder="supersecretpassword"
+                onChange={(e) => setLoginForm({...loginForm, password: e.target.value})}
                 required
               />
               <label htmlFor="floatingPassword">Password</label>
