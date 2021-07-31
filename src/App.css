@@ -1,3 +1,22 @@
 * {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
+}
+
+body {
+  background: rgb(0, 255, 209);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 209, 1) 0%,
+    rgba(99, 79, 222, 1) 100%
+  );
+}
+
+.form-control {
+  border: black 1px solid;
+}
+
+.signupContainer {
+  background-color: white;
+  border-radius: 50px;
+  height: 500px;
 }
