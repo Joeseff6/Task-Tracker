@@ -17,3 +17,4 @@ _So that I can track my current short term tasks_
 - [ ] User can set tasks to deliver a reminder
 - [ ] The reminding task will deliver a reminder at a specified time prior to task start
 - [ ] User is able to logout and end session
+- [ ] Application will be responsive in both Desktop and Mobile resolutions
