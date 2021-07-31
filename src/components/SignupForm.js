@@ -1,4 +1,5 @@
 import Button from "./Button";
+import { Link } from 'react-router-dom';
 
 const SignupForm = () => {
   return (
@@ -37,9 +38,9 @@ const SignupForm = () => {
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
-            <Button text="Sign Up" backgroundColor="black" color="white" />
+            <Button text="Sign Up" backgroundColor="#FF6F59" color="black" />
           </form>
-          <h4>Already a user? Sign in!</h4>
+          <Link to='/' className='h5'>Already a user? Log in!</Link>
         </div>
       </div>
     </div>
