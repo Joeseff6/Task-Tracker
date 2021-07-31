@@ -1,7 +1,14 @@
 import Button from "./Button";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const SignupForm = () => {
+  const [ signupForm, setSignupForm] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
   return (
     <div className="row justify-content-center">
       <div className="col-sm-6 signupContainer">
@@ -14,6 +21,7 @@ const SignupForm = () => {
                 className="form-control"
                 id="floatingUsername"
                 placeholder="user123"
+                onChange={(e) => setSignupForm({...signupForm, username: e.target.value})}
                 required
               />
               <label htmlFor="floatingUsername">Username</label>
@@ -24,6 +32,7 @@ const SignupForm = () => {
                 className="form-control"
                 id="floatingEmail"
                 placeholder="name@example.com"
+                onChange={(e) => setSignupForm({...signupForm, email: e.target.value})}
                 required
               />
               <label htmlFor="floatingEmail">Email address</label>
@@ -34,13 +43,16 @@ const SignupForm = () => {
                 className="form-control"
                 id="floatingPassword"
                 placeholder="supersecretpassword"
+                onChange={(e) => setSignupForm({...signupForm, password: e.target.value})}
                 required
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
             <Button text="Sign Up" backgroundColor="#FF6F59" color="black" />
           </form>
-          <Link to='/' className='h5'>Already a user? Log in!</Link>
+          <Link to="/" className="h5">
+            Already a user? Log in!
+          </Link>
         </div>
       </div>
     </div>
