@@ -10,7 +10,7 @@ const LoginForm = () => {
 
   return (
     <div className="row justify-content-center">
-      <div className="col-sm-6 signupContainer">
+      <div className="col-sm-6 loginContainer" style={{height: '500px'}}>
         <div className="row">
           <h2 className="text-center mb-3 mt-5">Log in</h2>
           <form>
