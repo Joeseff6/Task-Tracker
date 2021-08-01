@@ -15,7 +15,7 @@ body {
   border: black 1px solid;
 }
 
-.signupContainer {
+.signupContainer, .taskListView {
   background-color: white;
   border-radius: 50px;
   height: 500px;
