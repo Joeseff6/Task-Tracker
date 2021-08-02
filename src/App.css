@@ -15,8 +15,13 @@ body {
   border: black 1px solid;
 }
 
-.signupContainer, .loginContainer, .taskListView {
+.signupContainer, .loginContainer {
   background-color: white;
   border-radius: 50px;
   border: 1px black solid;
+}
+
+.taskListView {
+  background-color: white;
+  border: 2px black solid;
 }
