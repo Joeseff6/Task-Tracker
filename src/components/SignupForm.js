@@ -48,7 +48,7 @@ const SignupForm = () => {
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
-            <Button text="Sign Up" backgroundColor="#FF6F59" color="black" />
+            <Button text="Sign Up" backgroundColor="#FF6F59" />
           </form>
           <Link to="/" className="h5">
             Already a user? Log in!
