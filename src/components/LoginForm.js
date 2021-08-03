@@ -36,7 +36,7 @@ const LoginForm = () => {
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
-            <Button text="Login" backgroundColor="#43AA8B" color="black" />
+            <Button text="Login" backgroundColor="#43AA8B" />
           </form>
           <Link to='/signup' className='h5'>Not a user yet? Sign up!</Link>
         </div>
