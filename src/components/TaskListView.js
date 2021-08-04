@@ -18,9 +18,16 @@ const TaskListView = () => {
     setTasks(data);
   };
 
-  const handleToggle = () => {
+  const handleToggleForm = () => {
     setAddTask(!addTask);
   };
+
+  const handleToggleReminder = (e) => {
+    const index = e.target.dataset.index;
+    tasks[index].reminder = !tasks[index].reminder;
+    setTasks([...tasks]);
+  }
+  
 
   return (
     <div className="row justify-content-center">
@@ -36,13 +43,13 @@ const TaskListView = () => {
               <Button
                 text="Close Form"
                 backgroundColor="yellow"
-                onClick={handleToggle}
+                onClick={handleToggleForm}
               />
             ) : (
               <Button
                 text="Add Tasks"
                 backgroundColor="green"
-                onClick={handleToggle}
+                onClick={handleToggleForm}
               />
             )}
           </div>
@@ -55,7 +62,7 @@ const TaskListView = () => {
         </div>
         <div className="row">
           <div className="col">
-            {addTask ? <AddTaskForm /> : <Tasks tasks={tasks} />}
+            {addTask ? <AddTaskForm /> : <Tasks tasks={tasks} onDoubleClick={handleToggleReminder}/>}
           </div>
         </div>
       </div>
