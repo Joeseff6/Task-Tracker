@@ -7,7 +7,7 @@ const Button = ({ text, backgroundColor, onClick, onDoubleClick, index }) => {
       onDoubleClick={onDoubleClick}
       data-index={index}
     >
-      <span data-index={index}>{text}</span>
+      <span className='h5' data-index={index}>{text}</span>
     </button>
   );
 };
