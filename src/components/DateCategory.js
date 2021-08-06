@@ -1,13 +1,14 @@
 import React from "react";
+import Button from "./Button";
 
-const DateCategory = () => {
-  const categories = ["Today", "Tomorrow", "This Week", "This Month", "Calendar"];
+const DateCategory = ({ onClick }) => {
+  const categories = ["Past Due", "Today", "Tomorrow", "This Week", "This Month", "All Tasks"];
 
   return (
     <>
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <div className="col" key={category} style={{borderBottom: '2px solid black'}}>
-          <h3 className="text-center">{category}</h3>
+          <Button text={category} index={index} onClick={onClick[index]}/>
         </div>
       ))}
     </>
