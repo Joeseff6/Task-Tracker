@@ -8,6 +8,7 @@ const Tasks = ({ tasks, onDoubleClick }) => {
         <div className='col-3 task' key={task.id}>
           <h5>{task.date}</h5>
           <h5>{task.task}</h5>
+          <h6> Time: {task.time}</h6>
           {task.reminder ? (
             <Button text='Reminder: On' onDoubleClick={onDoubleClick} index={index}/>
           ) : (
