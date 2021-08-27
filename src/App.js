@@ -3,11 +3,13 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
-import TaskListView from './components/TaskListView';
+import TaskListView from "./components/TaskListView";
+import Container from "react-bootstrap/Container";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="container-md">
+    <Container fluid="md">
       <Header />
       <TaskListView />
       {/* <Router>
@@ -18,7 +20,7 @@ function App() {
           <SignupForm />
         </Route>
       </Router> */}
-    </div>
+    </Container>
   );
 }
 
