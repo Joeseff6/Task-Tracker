@@ -11,7 +11,7 @@ const LoginView = () => {
         <Card className="col-sm-8">
           <Card.Body className="text-center">
             <Card.Title className="fs-1 mb-4">Login!</Card.Title>
-            <Card.Subtitle className="mb-3">
+            <Card.Subtitle className="fs-5 mb-3">
               Login to log tasks.
             </Card.Subtitle>
             <LoginForm />
