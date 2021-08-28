@@ -2,7 +2,7 @@ import Button from "./Button";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
 
-const LoginForm = () => {
+const LoginView = () => {
   const [ loginForm, setLoginForm] = useState({
     username: '',
     password: '',
@@ -45,4 +45,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginView;

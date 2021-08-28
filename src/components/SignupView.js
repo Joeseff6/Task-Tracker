@@ -5,8 +5,10 @@ import { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 
-class SignupForm extends React.Component {
+class SignupView extends React.Component {
   // constructor(props) {
   //   super(props);
 
@@ -14,8 +16,7 @@ class SignupForm extends React.Component {
   // }
   state = { username: "", email: "", password: "" };
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -23,8 +24,19 @@ class SignupForm extends React.Component {
         <Col className="justify-content-center d-flex">
           <Card className="col-8">
             <Card.Body className="text-center">
-              <Card.Title className="fs-1 mb-3">Sign Up!</Card.Title>
-              <Card.Subtitle>Not a user? Sign up to log tasks</Card.Subtitle>
+              <Card.Title className="fs-1 mb-4">Sign Up!</Card.Title>
+              <Card.Subtitle className="mb-3">
+                Not a user? Sign up to log tasks
+              </Card.Subtitle>
+              <Form>
+                <FloatingLabel
+                  controlId="floatingUsername"
+                  label="Username"
+                  className="mb-3"
+                >
+                  <Form.Control type="text" placeholder="user123" />
+                </FloatingLabel>
+              </Form>
             </Card.Body>
           </Card>
         </Col>
@@ -33,7 +45,7 @@ class SignupForm extends React.Component {
   }
 }
 
-//const SignupForm = () => {
+//const SignupView = () => {
 // const [signupForm, setSignupForm] = useState({
 //   username: "",
 //   email: "",
@@ -90,4 +102,4 @@ class SignupForm extends React.Component {
 //  );
 //};
 
-export default SignupForm;
+export default SignupView;
