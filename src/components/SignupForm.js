@@ -38,7 +38,7 @@ export default class SignupForm extends Component {
             onChange={(e) => this.setState({ password: e.target.value })}
           />
         </FloatingLabel>
-        <Button as="input" type="submit" value="Submit" variant="dark"></Button>
+        <Button as="input" type="submit" value="Submit" variant="dark" />
       </Form>
     );
   }
