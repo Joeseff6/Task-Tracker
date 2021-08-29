@@ -5,13 +5,20 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
 const formatTime = (time) => {
-  let timeArr = time.split(":").map((element) => parseInt(element));
-  let [hour, minute] = timeArr;
+  const timeArr = time.split(":").map((element) => parseInt(element));
+  const [hour, minute] = timeArr;
   if (hour > 12) {
     return `${hour - 12}:${minute} PM`;
   }
   return `${hour}:${minute} AM`;
 };
+
+const formatDate = (date) => {
+  const dateArr = date.split("-").map(element => parseInt(element));
+  const [ year, month, day ] = dateArr;
+  return `${month}/${day}/${year}`;
+
+}
 
 export default class AddTaskForm extends Component {
   state = { task: "", time: "", date: "", reminder: false };
@@ -41,7 +48,10 @@ export default class AddTaskForm extends Component {
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Date</InputGroup.Text>
-          <FormControl type="date" onChange={(e) => this.setState({ date: e.target.value })} required />
+          <FormControl type="date" onChange={(e) => {
+            let formattedDate = formatDate(e.target.value);
+            this.setState({ date: formattedDate });
+            }} required />
         </InputGroup>
         <Form.Check
           type="checkbox"
