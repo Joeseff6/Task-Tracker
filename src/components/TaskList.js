@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const TaskList = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+export default class TaskList extends Component {
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
 }
-
-export default TaskList
