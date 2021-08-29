@@ -5,20 +5,24 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
 const formatTime = (time) => {
-  const timeArr = time.split(":").map((element) => parseInt(element));
+  const timeArr = time.split(":");
   const [hour, minute] = timeArr;
-  if (hour > 12) {
-    return `${hour - 12}:${minute} PM`;
+  if (parseInt(hour) === 0) {
+    return `12:${minute} AM`;
+  } else if (parseInt(hour) === 12) {
+    return `${parseInt(hour)}:${minute} PM`;
+  } else if (parseInt(hour) > 12) {
+    return `${parseInt(hour) - 12}:${minute} PM`;
+  } else {
+    return `${parseInt(hour)}:${minute} AM`;
   }
-  return `${hour}:${minute} AM`;
 };
 
 const formatDate = (date) => {
-  const dateArr = date.split("-").map(element => parseInt(element));
-  const [ year, month, day ] = dateArr;
+  const dateArr = date.split("-").map((element) => parseInt(element));
+  const [year, month, day] = dateArr;
   return `${month}/${day}/${year}`;
-
-}
+};
 
 export default class AddTaskForm extends Component {
   state = { task: "", time: "", date: "", reminder: false };
@@ -48,17 +52,21 @@ export default class AddTaskForm extends Component {
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Date</InputGroup.Text>
-          <FormControl type="date" onChange={(e) => {
-            let formattedDate = formatDate(e.target.value);
-            this.setState({ date: formattedDate });
-            }} required />
+          <FormControl
+            type="date"
+            onChange={(e) => {
+              let formattedDate = formatDate(e.target.value);
+              this.setState({ date: formattedDate });
+            }}
+            required
+          />
         </InputGroup>
         <Form.Check
           type="checkbox"
           label="Reminder?"
           id="reminder"
           className="text-start"
-          onChange={() => this.setState({ reminder: !this.state.reminder})}
+          onChange={() => this.setState({ reminder: !this.state.reminder })}
         />
         <Button variant="dark" type="submit" as="input" value="Submit" />
       </Form>
