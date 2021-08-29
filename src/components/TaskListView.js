@@ -12,6 +12,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import AddTaskForm from "./AddTaskForm";
 import React, { Component } from "react";
+import TaskList from "./TaskList";
 
 export default class TaskListView extends Component {
   state = { show: false };
@@ -34,7 +35,7 @@ export default class TaskListView extends Component {
               >
                 Add Task
               </Button>
-              {this.state.show ? <AddTaskForm /> : "Nothing to show"}
+              {this.state.show ? <AddTaskForm /> : <TaskList />}
             </Card.Body>
           </Card>
         </Col>
