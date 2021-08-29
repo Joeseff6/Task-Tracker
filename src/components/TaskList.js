@@ -21,6 +21,20 @@ export default class TaskList extends Component {
   }
 
   render() {
-    return <h1>This is a list</h1>
+    if (this.state.tasks.length > 0) {
+      return (
+        <Row>
+          {this.state.tasks.map((task) => (
+            <Tasks task={task} />
+          ))}
+        </Row>
+      );
+    } else {
+      return (
+        <Row className="text-center fs-3">
+          <span>No tasks available.</span>
+        </Row>
+      );
+    }
   }
 }
