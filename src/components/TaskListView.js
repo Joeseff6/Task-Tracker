@@ -1,11 +1,3 @@
-// import { useState, useEffect } from "react";
-// import Button from "./Button";
-// import DateCategory from "./DateCategory";
-// import axios from "axios";
-// import Tasks from "./Tasks";
-// const date = new Date();
-// const today = parseInt(date.getDate());
-
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
