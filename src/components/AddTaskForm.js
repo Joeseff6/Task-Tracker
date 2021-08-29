@@ -4,7 +4,14 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-
+const formatTime = (time) => {
+  let timeArr = time.split(":").map((element) => parseInt(element));
+  let [hour, minute] = timeArr;
+  if (hour > 12) {
+    return `${hour - 12}:${minute} PM`;
+  }
+  return `${hour}:${minute} AM`;
+};
 
 export default class AddTaskForm extends Component {
   state = { task: "", time: "", date: "", reminder: false };
@@ -25,6 +32,10 @@ export default class AddTaskForm extends Component {
           <InputGroup.Text>Time</InputGroup.Text>
           <FormControl
             type="time"
+            onChange={(e) => {
+              let formattedTime = formatTime(e.target.value);
+              this.setState({ time: formattedTime });
+            }}
             required
           />
         </InputGroup>
