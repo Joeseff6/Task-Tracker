@@ -23,7 +23,7 @@ export default class TaskList extends Component {
   render() {
     if (this.state.tasks.length > 0) {
       return (
-        <Row>
+        <Row className="justify-content-center">
           {this.state.tasks.map((task) => (
             <Tasks task={task} />
           ))}
