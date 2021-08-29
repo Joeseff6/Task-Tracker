@@ -3,31 +3,48 @@
 // import DateCategory from "./DateCategory";
 // import axios from "axios";
 // import Tasks from "./Tasks";
-// import AddTaskForm from "./AddTaskForm";
 // const date = new Date();
 // const today = parseInt(date.getDate());
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import AddTaskForm from "./AddTaskForm";
+import React, { Component } from "react";
 
+export default class TaskListView extends Component {
+  state = { show: false };
 
-const TaskListView = () => {
+  render() {
+    return (
+      <Row>
+        <Col className="d-flex justify-content-center">
+          <Card className="col-9">
+            <Card.Body className="text-center">
+              <Card.Title className="fs-1 mb-4">Your Task List</Card.Title>
+              <Card.Subtitle className="fs-5 mb-3">
+                Add, remove, and update tasks!
+              </Card.Subtitle>
+              <Button
+                variant={!this.state.show ? "success" : "warning"}
+                style={{ width: "150px", color: "black" }}
+                onClick={() => this.setState({ show: !this.state.show })}
+                className="mb-3"
+              >
+                Add Task
+              </Button>
+              {this.state.show ? <AddTaskForm /> : "Nothing to show"}
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    );
+  }
+}
 
-  return (
-    <Row>
-      <Col className="d-flex justify-content-center">
-        <Card className="col-9">
-          <Card.Body className="text-center">
-            <Card.Title className="fs-1 mb-4">Your Task List</Card.Title>
-            <Card.Subtitle className="fs-5">Add, remove, and update tasks!</Card.Subtitle>
-          </Card.Body>
-        </Card>
-      </Col>
-    </Row>
-  )
-  // const [tasks, setTasks] = useState([]);
-  // const [addTask, setAddTask] = useState(false);
+// const [tasks, setTasks] = useState([]);
+// const [addTask, setAddTask] = useState(false);
 
 //   return (
 //     <div className="row justify-content-center">
@@ -81,85 +98,82 @@ const TaskListView = () => {
 //   );
 // };
 
-  // const getTasks = async () => {
-  //   const { data } = await axios.get("http://localhost:5000/tasks");
-  //   console.log(data);
-  //   setTasks(data);
-  // };
+// const getTasks = async () => {
+//   const { data } = await axios.get("http://localhost:5000/tasks");
+//   console.log(data);
+//   setTasks(data);
+// };
 
-  // useEffect(() => {
-  //   getTasks();
-  // }, []);
+// useEffect(() => {
+//   getTasks();
+// }, []);
 
-  // const handleToggleForm = () => {
-  //   setAddTask(!addTask);
-  // };
+// const handleToggleForm = () => {
+//   setAddTask(!addTask);
+// };
 
-  // const handleToggleReminder = (e) => {
-  //   const index = e.target.dataset.index;
-  //   tasks[index].reminder = !tasks[index].reminder;
-  //   setTasks([...tasks]);
-  // };
+// const handleToggleReminder = (e) => {
+//   const index = e.target.dataset.index;
+//   tasks[index].reminder = !tasks[index].reminder;
+//   setTasks([...tasks]);
+// };
 
-  // const sortByPastDue = async () => {
-  //   await getTasks();
-  //   console.log(tasks);
-  //   const filteredTasks = tasks.filter((task) => {
-  //     const taskDate = parseInt(task.date.split("/")[1]);
-  //     console.log(taskDate < today);
-  //     return taskDate < today;
-  //   });
-  //   setTasks([...filteredTasks]);
-  // };
+// const sortByPastDue = async () => {
+//   await getTasks();
+//   console.log(tasks);
+//   const filteredTasks = tasks.filter((task) => {
+//     const taskDate = parseInt(task.date.split("/")[1]);
+//     console.log(taskDate < today);
+//     return taskDate < today;
+//   });
+//   setTasks([...filteredTasks]);
+// };
 
-  // const sortByToday = async () => {
-  //   await getTasks();
-  //   console.log(tasks);
-  //   const filteredTasks = tasks.filter((task) => {
-  //     const taskDate = parseInt(task.date.split("/")[1]);
-  //     return taskDate === today;
-  //   });
-  //   setTasks([...filteredTasks]);
-  // };
+// const sortByToday = async () => {
+//   await getTasks();
+//   console.log(tasks);
+//   const filteredTasks = tasks.filter((task) => {
+//     const taskDate = parseInt(task.date.split("/")[1]);
+//     return taskDate === today;
+//   });
+//   setTasks([...filteredTasks]);
+// };
 
-  // const sortByTomorrow = () => {
-  //   getTasks();
-  //   const taskDate = parseInt(tasks[0].date.split("/")[1]);
-  //   const filteredTasks = tasks.filter((task) => {
-  //     const taskDate = parseInt(task.date.split("/")[1]);
-  //     return taskDate < today;
-  //   });
-  //   setTasks(filteredTasks);
-  // };
+// const sortByTomorrow = () => {
+//   getTasks();
+//   const taskDate = parseInt(tasks[0].date.split("/")[1]);
+//   const filteredTasks = tasks.filter((task) => {
+//     const taskDate = parseInt(task.date.split("/")[1]);
+//     return taskDate < today;
+//   });
+//   setTasks(filteredTasks);
+// };
 
-  // const sortByThisWeek = () => {
-  //   getTasks();
-  //   const taskDate = parseInt(tasks[0].date.split("/")[1]);
-  //   const filteredTasks = tasks.filter((task) => {
-  //     const taskDate = parseInt(task.date.split("/")[1]);
-  //     return taskDate < today;
-  //   });
-  //   setTasks(filteredTasks);
-  // };
+// const sortByThisWeek = () => {
+//   getTasks();
+//   const taskDate = parseInt(tasks[0].date.split("/")[1]);
+//   const filteredTasks = tasks.filter((task) => {
+//     const taskDate = parseInt(task.date.split("/")[1]);
+//     return taskDate < today;
+//   });
+//   setTasks(filteredTasks);
+// };
 
-  // const sortByThisMonth = () => {
-  //   getTasks();
-  //   const taskDate = parseInt(tasks[0].date.split("/")[1]);
-  //   const filteredTasks = tasks.filter((task) => {
-  //     const taskDate = parseInt(task.date.split("/")[1]);
-  //     return taskDate < today;
-  //   });
-  //   setTasks(filteredTasks);
-  // };
+// const sortByThisMonth = () => {
+//   getTasks();
+//   const taskDate = parseInt(tasks[0].date.split("/")[1]);
+//   const filteredTasks = tasks.filter((task) => {
+//     const taskDate = parseInt(task.date.split("/")[1]);
+//     return taskDate < today;
+//   });
+//   setTasks(filteredTasks);
+// };
 
-  // const sortFunctions = [
-  //   sortByPastDue,
-  //   sortByToday,
-  //   sortByTomorrow,
-  //   sortByThisWeek,
-  //   sortByThisMonth,
-  //   getTasks,
-  // ];
-}
-
-export default TaskListView;
+// const sortFunctions = [
+//   sortByPastDue,
+//   sortByToday,
+//   sortByTomorrow,
+//   sortByThisWeek,
+//   sortByThisMonth,
+//   getTasks,
+// ];
