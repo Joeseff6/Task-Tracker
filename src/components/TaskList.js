@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import axios from "axios";
 import Tasks from "./Tasks";
 
@@ -25,7 +24,7 @@ export default class TaskList extends Component {
       return (
         <Row className="justify-content-center">
           {this.state.tasks.map((task) => (
-            <Tasks task={task} />
+            <Tasks task={task} key={task.id}/>
           ))}
         </Row>
       );
