@@ -9,6 +9,11 @@ import TaskList from "./TaskList";
 export default class TaskListView extends Component {
   state = { show: false };
 
+  renderJSX () {
+    if (this.state.show) return <AddTaskForm />
+    if (!this.state.show) return <TaskList />
+  }
+
   render() {
     return (
       <Row>
@@ -27,7 +32,7 @@ export default class TaskListView extends Component {
               >
                 Add Task
               </Button>
-              {this.state.show ? <AddTaskForm /> : <TaskList />}
+              {this.renderJSX()}
             </Card.Body>
           </Card>
         </Col>
