@@ -5,26 +5,33 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
 export default class AddTaskForm extends Component {
-  state = { task: "", time: "", date: "", reminder: false };
+  constructor(props) {
+    super(props);
 
-  formatTime (time) {
-    const timeArr = time.split(":");
+    this.onTimeChange = this.onTimeChange.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
+    this.state = { task: "", time: "", date: "", reminder: false };
+  }
+
+
+  onTimeChange (e) {
+    const timeArr = e.target.value.split(":");
     const [hour, minute] = timeArr;
     if (parseInt(hour) === 0) {
-      return `12:${minute} AM`;
+      this.setState({ time: `12:${minute} AM`});
     } else if (parseInt(hour) === 12) {
-      return `${parseInt(hour)}:${minute} PM`;
+      this.setState({ time: `${parseInt(hour)}:${minute} PM` });
     } else if (parseInt(hour) > 12) {
-      return `${parseInt(hour) - 12}:${minute} PM`;
+      this.setState({ time: `${parseInt(hour) - 12}:${minute} PM` });
     } else {
-      return `${parseInt(hour)}:${minute} AM`;
+      this.setState({ time: `${parseInt(hour)}:${minute} AM` });
     }
   };
   
-  formatDate(date) {
-    const dateArr = date.split("-").map((element) => parseInt(element));
+  onDateChange(e) {
+    const dateArr = e.target.value.split("-").map((element) => parseInt(element));
     const [year, month, day] = dateArr;
-    return `${month}/${day}/${year}`;
+    this.setState({ date: `${month}/${day}/${year}` });
   };
 
   render() {
@@ -43,10 +50,7 @@ export default class AddTaskForm extends Component {
           <InputGroup.Text>Time</InputGroup.Text>
           <FormControl
             type="time"
-            onChange={(e) => {
-              let formattedTime = this.formatTime(e.target.value);
-              this.setState({ time: formattedTime });
-            }}
+            onChange={this.onTimeChange}
             required
           />
         </InputGroup>
@@ -54,10 +58,7 @@ export default class AddTaskForm extends Component {
           <InputGroup.Text>Date</InputGroup.Text>
           <FormControl
             type="date"
-            onChange={(e) => {
-              let formattedDate = this.formatDate(e.target.value);
-              this.setState({ date: formattedDate });
-            }}
+            onChange={this.onDateChange}
             required
           />
         </InputGroup>
