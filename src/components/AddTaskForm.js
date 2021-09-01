@@ -4,28 +4,28 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-const formatTime = (time) => {
-  const timeArr = time.split(":");
-  const [hour, minute] = timeArr;
-  if (parseInt(hour) === 0) {
-    return `12:${minute} AM`;
-  } else if (parseInt(hour) === 12) {
-    return `${parseInt(hour)}:${minute} PM`;
-  } else if (parseInt(hour) > 12) {
-    return `${parseInt(hour) - 12}:${minute} PM`;
-  } else {
-    return `${parseInt(hour)}:${minute} AM`;
-  }
-};
-
-const formatDate = (date) => {
-  const dateArr = date.split("-").map((element) => parseInt(element));
-  const [year, month, day] = dateArr;
-  return `${month}/${day}/${year}`;
-};
-
 export default class AddTaskForm extends Component {
   state = { task: "", time: "", date: "", reminder: false };
+
+  formatTime (time) {
+    const timeArr = time.split(":");
+    const [hour, minute] = timeArr;
+    if (parseInt(hour) === 0) {
+      return `12:${minute} AM`;
+    } else if (parseInt(hour) === 12) {
+      return `${parseInt(hour)}:${minute} PM`;
+    } else if (parseInt(hour) > 12) {
+      return `${parseInt(hour) - 12}:${minute} PM`;
+    } else {
+      return `${parseInt(hour)}:${minute} AM`;
+    }
+  };
+  
+  formatDate(date) {
+    const dateArr = date.split("-").map((element) => parseInt(element));
+    const [year, month, day] = dateArr;
+    return `${month}/${day}/${year}`;
+  };
 
   render() {
     return (
@@ -44,7 +44,7 @@ export default class AddTaskForm extends Component {
           <FormControl
             type="time"
             onChange={(e) => {
-              let formattedTime = formatTime(e.target.value);
+              let formattedTime = this.formatTime(e.target.value);
               this.setState({ time: formattedTime });
             }}
             required
@@ -55,7 +55,7 @@ export default class AddTaskForm extends Component {
           <FormControl
             type="date"
             onChange={(e) => {
-              let formattedDate = formatDate(e.target.value);
+              let formattedDate = this.formatDate(e.target.value);
               this.setState({ date: formattedDate });
             }}
             required
