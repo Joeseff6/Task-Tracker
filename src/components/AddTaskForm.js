@@ -13,7 +13,6 @@ export default class AddTaskForm extends Component {
     this.state = { task: "", time: "", date: "", reminder: false };
   }
 
-
   onTimeChange (e) {
     const timeArr = e.target.value.split(":");
     const [hour, minute] = timeArr;
@@ -27,6 +26,11 @@ export default class AddTaskForm extends Component {
       this.setState({ time: `${parseInt(hour)}:${minute} AM` });
     }
   };
+
+  onFormSubmit(e) {
+    e.preventDefault();
+    console.log("form submitted")
+  }
   
   onDateChange(e) {
     const dateArr = e.target.value.split("-").map((element) => parseInt(element));
@@ -69,7 +73,7 @@ export default class AddTaskForm extends Component {
           className="text-start"
           onChange={() => this.setState({ reminder: !this.state.reminder })}
         />
-        <Button variant="dark" type="submit" as="input" value="Submit" />
+        <Button variant="dark" type="submit" as="input" value="Submit" onSubmit={this.onFormSubmit}/>
       </Form>
     );
   }
