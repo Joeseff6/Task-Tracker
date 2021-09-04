@@ -7,11 +7,24 @@ import React, { Component } from "react";
 import TaskList from "./TaskList";
 
 export default class TaskListView extends Component {
-  state = { show: false };
+  state = { addTask: false };
 
-  renderJSX () {
-    if (this.state.show) return <AddTaskForm />
-    if (!this.state.show) return <TaskList />
+  renderJSX() {
+    if (this.state.addTask) {
+      return (
+        <Row>
+          <AddTaskForm display=""/>
+          <TaskList display="d-none"/>
+        </Row>
+      );
+    } else {
+      return (
+        <Row>
+          <AddTaskForm display="d-none"/>
+          <TaskList display=""/>
+        </Row>
+      );
+    }
   }
 
   render() {
@@ -25,9 +38,9 @@ export default class TaskListView extends Component {
                 Add, remove, and update tasks!
               </Card.Subtitle>
               <Button
-                variant={!this.state.show ? "success" : "warning"}
+                variant={!this.state.addTask ? "success" : "warning"}
                 style={{ width: "150px", color: "black" }}
-                onClick={() => this.setState({ show: !this.state.show })}
+                onClick={() => this.setState({ addTask: !this.state.addTask })}
                 className="mb-3"
               >
                 Add Task
