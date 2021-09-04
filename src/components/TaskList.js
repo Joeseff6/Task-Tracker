@@ -7,6 +7,10 @@ import Spinner from "react-bootstrap/Spinner";
 export default class TaskList extends Component {
   state = { tasks: ["Loading"] };
 
+  onToggle = (index) => {
+    console.log(index);
+  };
+
   async fetchTasks() {
     try {
       const { data } = await axios.get("http://localhost:5000/tasks");
@@ -14,11 +18,6 @@ export default class TaskList extends Component {
     } catch (err) {
       return ["Error"];
     }
-  }
-
-  async componentDidMount() {
-    const fetchedTasks = await this.fetchTasks();
-    this.setState({ tasks: fetchedTasks });
   }
 
   renderJSX() {
@@ -30,7 +29,6 @@ export default class TaskList extends Component {
         </Row>
       );
     }
-
     if (this.state.tasks[0] === "Error") {
       return (
         <Row className="text-center fs-3">
@@ -38,11 +36,11 @@ export default class TaskList extends Component {
         </Row>
       );
     }
-
     if (this.state.tasks.length > 0) {
-      return this.state.tasks.map((task) => <Tasks task={task} key={task.id}/>);
+      return this.state.tasks.map((task, index) => (
+        <Tasks task={task} key={task.id} index={index} onToggle={this.onToggle}/>
+      ));
     }
-
     if (this.state.tasks.length === 0) {
       return (
         <Row className="text-center fs-3">
@@ -50,6 +48,12 @@ export default class TaskList extends Component {
         </Row>
       );
     }
+  }
+
+  async componentDidMount() {
+    const fetchedTasks = await this.fetchTasks();
+    this.setState({ tasks: fetchedTasks });
+    console.log(this.state.tasks)
   }
 
   render() {
