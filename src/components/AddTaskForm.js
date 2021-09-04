@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 export default class AddTaskForm extends Component {
   constructor(props) {
     super(props);
-
     this.onTimeChange = this.onTimeChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
     this.state = { task: "", time: "", date: "", reminder: false };
@@ -40,7 +39,7 @@ export default class AddTaskForm extends Component {
 
   render() {
     return (
-      <Form className="mb-3 col-sm-9 mx-auto">
+      <Form className={`mb-3 col-sm-9 mx-auto ${this.props.display}`}>
         <InputGroup className="mb-3">
           <InputGroup.Text>Task</InputGroup.Text>
           <FormControl
