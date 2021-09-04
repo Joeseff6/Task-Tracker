@@ -7,10 +7,9 @@ import Button from "react-bootstrap/Button";
 class Tasks extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
   }
 
-  toggleReminder = () => {
+  onButtonClick = () => {
     this.props.onToggle(this.props.index)
   }
 
@@ -23,7 +22,7 @@ class Tasks extends React.Component {
             <Card.Text>
               Date: {this.props.task.date} <br />
               Time: {this.props.task.time} <br />
-              <Button variant="light" style={{ border: "2px black solid"}} onClick={this.toggleReminder}>
+              <Button variant="light" style={{ border: "2px black solid"}} onClick={this.onButtonClick}>
                 Reminder? {this.props.task.reminder ? <BsCheckCircle fill="green"/> : <BsXCircle fill="red"/>}
               </Button>
             </Card.Text>
