@@ -55,6 +55,7 @@ export default class AddTaskForm extends Component {
           <FormControl
             placeholder="Do the dishes"
             type="text"
+            value={this.state.task}
             onChange={this.onInputChange}
             required
           />
@@ -80,6 +81,7 @@ export default class AddTaskForm extends Component {
           label="Reminder?"
           id="reminder"
           className="text-start"
+          value={this.state.reminder}
           onChange={() => this.setState({ reminder: !this.state.reminder })}
         />
         <Button variant="dark" type="submit" as="input" value="Submit" onSubmit={this.onFormSubmit}/>
