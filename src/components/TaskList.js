@@ -11,7 +11,6 @@ export default class TaskList extends Component {
   }
 
   onToggle = (index) => {
-    // this.state.tasks[index].reminder = !this.state.tasks[index].reminder;
     let taskArray = [...this.state.tasks];
     taskArray[index].reminder = !taskArray[index].reminder;
     this.setState({ tasks: taskArray });
