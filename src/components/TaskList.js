@@ -5,7 +5,10 @@ import Tasks from "./Tasks";
 import Spinner from "react-bootstrap/Spinner";
 
 export default class TaskList extends Component {
-  state = { tasks: ["Loading"] };
+  constructor(props) {
+    super(props);
+    this.state = { tasks: ["Loading"] }
+  }
 
   onToggle = (index) => {
     this.state.tasks[index].reminder = !this.state.tasks[index].reminder;
@@ -54,10 +57,9 @@ export default class TaskList extends Component {
   async componentDidMount() {
     const fetchedTasks = await this.fetchTasks();
     this.setState({ tasks: fetchedTasks });
-    console.log(this.state.tasks)
   }
 
   render() {
-    return <Row className="justify-content-center">{this.renderJSX()}</Row>;
+    return <Row className={`justify-content-center ${this.props.display}`}>{this.renderJSX()}</Row>;
   }
 }
