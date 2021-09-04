@@ -8,7 +8,8 @@ export default class TaskList extends Component {
   state = { tasks: ["Loading"] };
 
   onToggle = (index) => {
-    console.log(index);
+    this.state.tasks[index].reminder = !this.state.tasks[index].reminder;
+    this.setState({ tasks: this.state.tasks });
   };
 
   async fetchTasks() {
