@@ -12,6 +12,22 @@ export default class AddTaskForm extends Component {
     this.state = { task: "", time: "", date: "", reminder: false };
   }
 
+  onInputChange = (e) => {
+    const str = e.target.value;
+    if (str.length > 0 ) {
+      const capitalizedString = str[0].toUpperCase() + str.slice(1,str.length);
+      this.setState({ task: capitalizedString });
+    } else {
+      this.setState({ task: "" });
+    }
+  }
+
+  onDateChange(e) {
+    const dateArr = e.target.value.split("-").map((element) => parseInt(element));
+    const [year, month, day] = dateArr;
+    this.setState({ date: `${month}/${day}/${year}` });
+  };
+
   onTimeChange (e) {
     const timeArr = e.target.value.split(":");
     const [hour, minute] = timeArr;
@@ -29,12 +45,6 @@ export default class AddTaskForm extends Component {
   onFormSubmit(e) {
     e.preventDefault();
     console.log("form submitted")
-  }
-  
-  onDateChange(e) {
-    const dateArr = e.target.value.split("-").map((element) => parseInt(element));
-    const [year, month, day] = dateArr;
-    this.setState({ date: `${month}/${day}/${year}` });
   };
 
   render() {
@@ -45,7 +55,7 @@ export default class AddTaskForm extends Component {
           <FormControl
             placeholder="Do the dishes"
             type="text"
-            onChange={(e) => this.setState({ task: e.target.value })}
+            onChange={this.onInputChange}
             required
           />
         </InputGroup>
