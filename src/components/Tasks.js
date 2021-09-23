@@ -5,11 +5,6 @@ import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 
 class Tasks extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   onButtonClick = () => {
     this.props.onToggle(this.props.index)
   }
