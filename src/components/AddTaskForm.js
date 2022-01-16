@@ -49,7 +49,7 @@ export default class AddTaskForm extends Component {
 
   render() {
     return (
-      <Form className={`mb-3 col-sm-9 mx-auto ${this.props.display}`}>
+      <Form className="mb-3 col-sm-9 mx-auto">
         <InputGroup className="mb-3">
           <InputGroup.Text>Task</InputGroup.Text>
           <FormControl

@@ -61,6 +61,6 @@ export default class TaskList extends Component {
   }
 
   render() {
-    return <Row className={`justify-content-center ${this.props.display}`}>{this.renderJSX()}</Row>;
+    return <Row className="justify-content-center">{this.renderJSX()}</Row>;
   }
 }
