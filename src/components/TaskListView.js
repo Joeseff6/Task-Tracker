@@ -10,21 +10,7 @@ export default class TaskListView extends Component {
   state = { addTask: false };
 
   renderJSX() {
-    if (this.state.addTask) {
-      return (
-        <Row>
-          <AddTaskForm display=""/>
-          <TaskList display="d-none"/>
-        </Row>
-      );
-    } else {
-      return (
-        <Row>
-          <AddTaskForm display="d-none"/>
-          <TaskList display=""/>
-        </Row>
-      );
-    }
+    return <Row>{this.state.addTask ? <AddTaskForm /> : <TaskList />}</Row>;
   }
 
   render() {
