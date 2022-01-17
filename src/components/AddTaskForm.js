@@ -14,25 +14,27 @@ export default class AddTaskForm extends Component {
 
   onInputChange = (e) => {
     const str = e.target.value;
-    if (str.length > 0 ) {
-      const capitalizedString = str[0].toUpperCase() + str.slice(1,str.length);
+    if (str.length > 0) {
+      const capitalizedString = str[0].toUpperCase() + str.slice(1, str.length);
       this.setState({ task: capitalizedString });
     } else {
       this.setState({ task: "" });
     }
-  }
-
-  onDateChange(e) {
-    const dateArr = e.target.value.split("-").map((element) => parseInt(element));
-    const [year, month, day] = dateArr;
-    this.setState({ date: `${month}/${day}/${year}` });
   };
 
-  onTimeChange (e) {
+  onDateChange(e) {
+    const dateArr = e.target.value
+      .split("-")
+      .map((element) => parseInt(element));
+    const [year, month, day] = dateArr;
+    this.setState({ date: `${month}/${day}/${year}` });
+  }
+
+  onTimeChange(e) {
     const timeArr = e.target.value.split(":");
     const [hour, minute] = timeArr;
     if (parseInt(hour) === 0) {
-      this.setState({ time: `12:${minute} AM`});
+      this.setState({ time: `12:${minute} AM` });
     } else if (parseInt(hour) === 12) {
       this.setState({ time: `${parseInt(hour)}:${minute} PM` });
     } else if (parseInt(hour) > 12) {
@@ -40,12 +42,12 @@ export default class AddTaskForm extends Component {
     } else {
       this.setState({ time: `${parseInt(hour)}:${minute} AM` });
     }
-  };
+  }
 
   onFormSubmit(e) {
     e.preventDefault();
-    console.log("form submitted")
-  };
+    console.log("form submitted");
+  }
 
   render() {
     return (
@@ -62,29 +64,19 @@ export default class AddTaskForm extends Component {
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Time</InputGroup.Text>
-          <FormControl
-            type="time"
-            onChange={this.onTimeChange}
-            required
-          />
+          <FormControl type="time" onChange={this.onTimeChange} required />
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Date</InputGroup.Text>
-          <FormControl
-            type="date"
-            onChange={this.onDateChange}
-            required
-          />
+          <FormControl type="date" onChange={this.onDateChange} required />
         </InputGroup>
-        <Form.Check
-          type="checkbox"
-          label="Reminder?"
-          id="reminder"
-          className="text-start"
-          value={this.state.reminder}
-          onChange={() => this.setState({ reminder: !this.state.reminder })}
+        <Button
+          variant="dark"
+          type="submit"
+          as="input"
+          value="Submit"
+          onSubmit={this.onFormSubmit}
         />
-        <Button variant="dark" type="submit" as="input" value="Submit" onSubmit={this.onFormSubmit}/>
       </Form>
     );
   }
