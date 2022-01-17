@@ -12,7 +12,7 @@ import TaskList from "./components/TaskList";
 class App extends React.Component {
   state = { addTask: false };
 
-  renderJSX() {
+  renderComponent() {
     return <Row>{this.state.addTask ? <AddTaskForm /> : <TaskList />}</Row>;
   }
 
@@ -40,7 +40,7 @@ class App extends React.Component {
                 >
                   Add Task
                 </Button>
-                {this.renderJSX()}
+                {this.renderComponent()}
               </Card.Body>
             </Card>
           </Col>
