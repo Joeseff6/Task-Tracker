@@ -5,10 +5,6 @@ import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 
 class Tasks extends React.Component {
-  onButtonClick = () => {
-    this.props.onToggle(this.props.index)
-  }
-
   render() {
     return (
       <Col md={5}>
@@ -18,9 +14,6 @@ class Tasks extends React.Component {
             <Card.Text>
               Date: {this.props.task.date} <br />
               Time: {this.props.task.time} <br />
-              <Button variant="light" style={{ border: "2px black solid"}} onClick={this.onButtonClick}>
-                Reminder? {this.props.task.reminder ? <BsCheckCircle fill="green"/> : <BsXCircle fill="red"/>}
-              </Button>
             </Card.Text>
           </Card.Body>
         </Card>
