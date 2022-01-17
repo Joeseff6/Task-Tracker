@@ -11,12 +11,6 @@ body {
   );
 }
 
-.taskListView {
-  border: 2px black solid;
-  background: rgb(255,255,255);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(235,235,235,1) 50%, rgba(255,255,255,1) 100%);
-}
-
 .task {
   border-right: black 1px solid;
   border-bottom: black 1px solid;
