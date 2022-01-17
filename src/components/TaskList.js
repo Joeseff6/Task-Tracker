@@ -5,16 +5,7 @@ import Tasks from "./Tasks";
 import Spinner from "react-bootstrap/Spinner";
 
 export default class TaskList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { tasks: ["Loading"] }
-  }
-
-  onToggle = (index) => {
-    let taskArray = [...this.state.tasks];
-    taskArray[index].reminder = !taskArray[index].reminder;
-    this.setState({ tasks: taskArray });
-  };
+    state = { tasks: ["Loading"] };
 
   async fetchTasks() {
     try {
@@ -41,12 +32,12 @@ export default class TaskList extends Component {
         </Row>
       );
     }
-    if (this.state.tasks.length > 0) {
+    if (this.state.tasks.length) {
       return this.state.tasks.map((task, index) => (
         <Tasks task={task} key={task.id} index={index} onToggle={this.onToggle}/>
       ));
     }
-    if (this.state.tasks.length === 0) {
+    if (!this.state.tasks.length) {
       return (
         <Row className="text-center fs-3">
           <span className="fs-3">No tasks available.</span>
