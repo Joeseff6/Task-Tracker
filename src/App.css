@@ -11,12 +11,6 @@ body {
   );
 }
 
-.form-control {
-  border: black 1px solid;
-}
-
-.signupContainer,
-.loginContainer,
 .taskListView {
   border: 2px black solid;
   background: rgb(255,255,255);
