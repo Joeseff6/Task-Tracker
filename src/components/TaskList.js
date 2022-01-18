@@ -21,14 +21,18 @@ export default class TaskList extends Component {
       );
     }
     if (this.props.tasks.length) {
-      return this.props.tasks.map((task, index) => (
-        <Tasks
-          task={task}
-          key={task.id}
-          index={index}
-          onToggle={this.onToggle}
-        />
-      ));
+      return (
+        <Row className="justify-content-center">
+          {this.props.tasks.map((task, index) => (
+            <Tasks
+              task={task}
+              key={task.id}
+              index={index}
+              onToggle={this.onToggle}
+            />
+          ))}
+        </Row>
+      );
     }
     if (!this.props.tasks.length) {
       return (
@@ -40,6 +44,6 @@ export default class TaskList extends Component {
   }
 
   render() {
-    return <Row className="justify-content-center">{this.renderTasks()}</Row>;
+    return this.renderTasks();
   }
 }
