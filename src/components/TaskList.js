@@ -1,3 +1,4 @@
+import "./TaskList.css"
 import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Tasks from "./Tasks";
@@ -22,7 +23,7 @@ export default class TaskList extends Component {
     }
     if (this.props.tasks.length) {
       return (
-        <Row className="justify-content-center">
+        <Row className="justify-content-center overflow-auto" id="taskList">
           {this.props.tasks.map((task, index) => (
             <Tasks
               task={task}
