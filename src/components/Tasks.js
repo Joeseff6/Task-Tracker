@@ -8,7 +8,7 @@ class Tasks extends React.Component {
       <Col md={8}>
         <Card bg="light">
           <Card.Body>
-            <Card.Title>Task: {this.props.task.task}</Card.Title>
+            <Card.Title>{this.props.task.task}</Card.Title>
             <Card.Text>
               Date: {this.props.task.date} <br />
               Time: {this.props.task.time} <br />
