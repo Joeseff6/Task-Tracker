@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,10 +11,28 @@ import AddTaskForm from "./components/AddTaskForm";
 import TaskList from "./components/TaskList";
 
 class App extends React.Component {
-  state = { addTask: false };
+  state = { addTask: false, tasks: ["Loading"] };
 
   renderComponent() {
-    return <Row>{this.state.addTask ? <AddTaskForm /> : <TaskList />}</Row>;
+    return (
+      <Row>
+        {this.state.addTask ? <AddTaskForm /> : <TaskList tasks={this.state.tasks} />}
+      </Row>
+    );
+  }
+
+  async fetchTasks() {
+    try {
+      const { data } = await axios.get("http://localhost:5000/tasks");
+      return data;
+    } catch (err) {
+      return ["Error"];
+    }
+  }
+
+  async componentDidMount() {
+    const fetchedTasks = await this.fetchTasks();
+    this.setState({ tasks: fetchedTasks });
   }
 
   render() {
