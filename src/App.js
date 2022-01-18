@@ -14,11 +14,7 @@ class App extends React.Component {
   state = { addTask: false, tasks: ["Loading"] };
 
   renderComponent() {
-    return (
-      <Row>
-        {this.state.addTask ? <AddTaskForm /> : <TaskList tasks={this.state.tasks} />}
-      </Row>
-    );
+    return this.state.addTask ? <AddTaskForm /> : <TaskList tasks={this.state.tasks} />
   }
 
   async fetchTasks() {
