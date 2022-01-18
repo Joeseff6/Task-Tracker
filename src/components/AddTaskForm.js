@@ -36,7 +36,7 @@ export default class AddTaskForm extends Component {
 
   render() {
     return (
-      <Form className="mb-3 col-sm-9 mx-auto">
+      <Form className="mb-3 col-sm-9 mx-auto" onSubmit={this.onFormSubmit}>
         <InputGroup className="mb-3">
           <InputGroup.Text>Task</InputGroup.Text>
           <FormControl
@@ -60,7 +60,6 @@ export default class AddTaskForm extends Component {
           type="submit"
           as="input"
           value="Submit"
-          onSubmit={this.onFormSubmit}
         />
       </Form>
     );
