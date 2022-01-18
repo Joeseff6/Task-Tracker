@@ -5,8 +5,8 @@ import Card from "react-bootstrap/Card";
 class Tasks extends React.Component {
   render() {
     return (
-      <Col md={5}>
-        <Card bg="light" className="mb-3">
+      <Col md={8}>
+        <Card bg="light">
           <Card.Body>
             <Card.Title>Task: {this.props.task.task}</Card.Title>
             <Card.Text>
