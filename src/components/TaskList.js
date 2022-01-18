@@ -4,7 +4,7 @@ import Tasks from "./Tasks";
 import Spinner from "react-bootstrap/Spinner";
 
 export default class TaskList extends Component {
-  renderJSX() {
+  renderTasks() {
     if (this.props.tasks[0] === "Loading") {
       return (
         <Row className="justify-content-center">
@@ -40,6 +40,6 @@ export default class TaskList extends Component {
   }
 
   render() {
-    return <Row className="justify-content-center">{this.renderJSX()}</Row>;
+    return <Row className="justify-content-center">{this.renderTasks()}</Row>;
   }
 }
