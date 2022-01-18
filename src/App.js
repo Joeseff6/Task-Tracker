@@ -33,7 +33,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Container fluid="md">
+      <Container fluid="md" className="mb-5">
         <header>
           <h1 className="text-center">Task Tracker</h1>
         </header>
