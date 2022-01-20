@@ -10,6 +10,12 @@ import Button from "react-bootstrap/Button";
 import AddTaskForm from "./components/AddTaskForm";
 import TaskList from "./components/TaskList";
 
+const openTaskDatabase = () => {
+  let DBOpenReq = indexedDB.open("Tasks", 1);
+}
+
+openTaskDatabase();
+
 class App extends React.Component {
   state = { addTask: false, tasks: ["Loading"] };
 
