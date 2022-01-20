@@ -2,7 +2,7 @@ const indexedDBMethods = {
   openTaskDatabase: () => {
     let db = null;
     let objectStore = null;
-    let DBOpenReq = indexedDB.open("Tasks", 2);
+    let DBOpenReq = indexedDB.open("Tasks", 1);
 
     DBOpenReq.addEventListener("error", (error) => {
       console.warn(error);
@@ -14,7 +14,7 @@ const indexedDBMethods = {
       db = event.target.result;
       if (!db.objectStoreNames.contains("taskStore")) {
         objectStore = db.createObjectStore("taskStore", {
-          keyPath: "id",
+          autoIncrement: true,
         });
       }
     });
