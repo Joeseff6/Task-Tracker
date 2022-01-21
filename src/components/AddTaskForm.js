@@ -38,7 +38,7 @@ export default class AddTaskForm extends Component {
       time: this.state.time,
       complete: false,
     })
-
+    this.props.onFormSubmit();
   }
 
   render() {
