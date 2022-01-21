@@ -14,9 +14,14 @@ import { db } from "./db/db";
 class App extends React.Component {
   state = { addTask: false, tasks: ["Loading"] };
 
+
+  onFormSubmit = () => {
+    this.setState({ addTask: false });
+  }
+
   renderComponent() {
     return this.state.addTask ? (
-      <AddTaskForm />
+      <AddTaskForm onFormSubmit={this.onFormSubmit}/>
     ) : (
       <TaskList tasks={this.state.tasks} />
     );
@@ -31,7 +36,7 @@ class App extends React.Component {
     }
   }
 
-  async componentDidMount() {
+  componentDidMount() {
   }
 
   render() {
