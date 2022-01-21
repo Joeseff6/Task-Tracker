@@ -9,7 +9,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import AddTaskForm from "./components/AddTaskForm";
 import TaskList from "./components/TaskList";
-
+import { db } from "./db/db";
 
 class App extends React.Component {
   state = { addTask: false, tasks: ["Loading"] };
@@ -32,8 +32,6 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const fetchedTasks = await this.fetchTasks();
-    this.setState({ tasks: fetchedTasks });
   }
 
   render() {

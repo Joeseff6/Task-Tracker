@@ -5,7 +5,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import formatDate from "../helper/formatDate";
 import formatTime from "../helper/formatTime";
-import indexedDBMethods from "../helper/indexedDBMethods";
+import { db } from "../db/db";
 
 export default class AddTaskForm extends Component {
   state = { task: "", time: "", date: "" };
@@ -30,14 +30,15 @@ export default class AddTaskForm extends Component {
     this.setState({ time: formattedTime });
   };
 
-  onFormSubmit = (e) => {
+  onFormSubmit = async (e) => {
     e.preventDefault();
-    console.log("form submitted");
-    indexedDBMethods.addTaskToDB(
-      this.state.task,
-      this.state.date,
-      this.state.time,
-    );
+    await db.tasks.add({
+      task: this.state.task,
+      date: this.state.date,
+      time: this.state.time,
+      complete: false,
+    })
+
   }
 
   render() {
