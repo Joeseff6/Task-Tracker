@@ -1,0 +1,12 @@
+.card.bg-light, .completedTask {
+  height: 150px
+}
+
+.checkbox {
+  margin-left: 20px;
+}
+
+.completedTask {
+  background-color: #9DE7AD;
+  border: 2px solid #2CB549;
+}
