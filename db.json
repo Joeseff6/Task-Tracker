@@ -3,32 +3,38 @@
     {
       "id": 1,
       "task": "Pay the rent",
-      "date": "8/1/2021",
-      "reminder": true
+      "date": "8/1/2021"
     },
     {
       "id": 2,
       "task": "Do the dishes",
-      "date": "8/1/2021",
-      "reminder": false
+      "date": "8/1/2021"
     },
     {
       "id": 3,
       "task": "Go to the Dentist",
-      "date": "8/2/2021",
-      "reminder": true
+      "date": "8/2/2021"
     },
     {
       "id": 4,
       "task": "Take out the trash",
-      "date": "8/3/2021",
-      "reminder": false
+      "date": "8/3/2021"
     },
     {
       "id": 5,
       "task": "Go to the doctor's office",
-      "date": "8/3/2021",
-      "reminder": true
+      "date": "8/3/2021"
+    },
+    {
+      "id": 6,
+      "task": "Finish project",
+      "date": "8/4/2021"
+    },
+    {
+      "task": "work on project",
+      "time": "8:15PM",
+      "date": "2021-08-06",
+      "id": 7
     }
   ]
 }

@@ -11,10 +11,9 @@ _So that I can track my current short term tasks_
 
 ## Goals for Deployment
 
-- [ ] Have user auth for individual task setting
 - [ ] User will be presented with existing tasks if available
-- [ ] User will be able to add/edit/delete tasks
-- [ ] User can set tasks to deliver a reminder
-- [ ] The reminding task will deliver a reminder at a specified time prior to task start
-- [ ] User is able to logout and end session
+- [ ] User will be able to open a form upon clicking an "Add Form" button
+- [ ] User will be able to edit/delete tasks
+- [ ] Tasks will be sorted by date and time order
+- [ ] Tasks will be stored locally on the user's machine
 - [ ] Application will be responsive in both Desktop and Mobile resolutions

@@ -1,30 +1,39 @@
 import React from "react";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
-import { BsCheckCircle, BsXCircle } from "react-icons/bs";
-import Button from "react-bootstrap/Button";
+import { db } from "../db/db";
+import "./Tasks.css";
 
 class Tasks extends React.Component {
-  onButtonClick = () => {
-    this.props.onToggle(this.props.index)
-  }
+  onCheckboxClick = (e) => {
+    db.tasks.update(this.props.task.id, { complete: e.target.checked });
+  };
 
   render() {
     return (
-      <Col md={5}>
-        <Card bg="light" className="mb-3">
-          <Card.Body>
-            <Card.Title>Task: {this.props.task.task}</Card.Title>
-            <Card.Text>
-              Date: {this.props.task.date} <br />
-              Time: {this.props.task.time} <br />
-              <Button variant="light" style={{ border: "2px black solid"}} onClick={this.onButtonClick}>
-                Reminder? {this.props.task.reminder ? <BsCheckCircle fill="green"/> : <BsXCircle fill="red"/>}
-              </Button>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
+      <Row className="taskItem justify-content-center">
+        <Col md={8}>
+          <Card
+            className={this.props.task.complete ? "completedTask" : "bg-light"}
+          >
+            <Card.Body>
+              <Card.Title>{this.props.task.task}</Card.Title>
+              <Card.Text>
+                Date: {this.props.task.date} <br />
+                Time: {this.props.task.time} <br />
+                Completed?
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  onChange={this.onCheckboxClick}
+                  checked={this.props.task.complete ? true : false}
+                />
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     );
   }
 }

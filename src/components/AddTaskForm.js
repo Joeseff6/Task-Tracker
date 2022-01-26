@@ -3,53 +3,47 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+import formatDate from "../helper/formatDate";
+import formatTime from "../helper/formatTime";
+import { db } from "../db/db";
 
 export default class AddTaskForm extends Component {
-  constructor(props) {
-    super(props);
-    this.onTimeChange = this.onTimeChange.bind(this);
-    this.onDateChange = this.onDateChange.bind(this);
-    this.state = { task: "", time: "", date: "", reminder: false };
-  }
+  state = { task: "", time: "", date: "" };
 
   onInputChange = (e) => {
     const str = e.target.value;
-    if (str.length > 0 ) {
-      const capitalizedString = str[0].toUpperCase() + str.slice(1,str.length);
+    if (str.length) {
+      const capitalizedString = str[0].toUpperCase() + str.slice(1, str.length);
       this.setState({ task: capitalizedString });
     } else {
       this.setState({ task: "" });
     }
-  }
-
-  onDateChange(e) {
-    const dateArr = e.target.value.split("-").map((element) => parseInt(element));
-    const [year, month, day] = dateArr;
-    this.setState({ date: `${month}/${day}/${year}` });
   };
 
-  onTimeChange (e) {
-    const timeArr = e.target.value.split(":");
-    const [hour, minute] = timeArr;
-    if (parseInt(hour) === 0) {
-      this.setState({ time: `12:${minute} AM`});
-    } else if (parseInt(hour) === 12) {
-      this.setState({ time: `${parseInt(hour)}:${minute} PM` });
-    } else if (parseInt(hour) > 12) {
-      this.setState({ time: `${parseInt(hour) - 12}:${minute} PM` });
-    } else {
-      this.setState({ time: `${parseInt(hour)}:${minute} AM` });
-    }
+  onDateChange = (e) => {
+    const formattedDate = formatDate(e);
+    this.setState({ date: formattedDate });
   };
 
-  onFormSubmit(e) {
+  onTimeChange = (e) => {
+    const formattedTime = formatTime(e);
+    this.setState({ time: formattedTime });
+  };
+
+  onFormSubmit = async (e) => {
     e.preventDefault();
-    console.log("form submitted")
-  };
+    await db.tasks.add({
+      task: this.state.task,
+      date: this.state.date,
+      time: this.state.time,
+      complete: false,
+    })
+    this.props.onFormSubmit();
+  }
 
   render() {
     return (
-      <Form className={`mb-3 col-sm-9 mx-auto ${this.props.display}`}>
+      <Form className="mb-3 col-sm-9 mx-auto" onSubmit={this.onFormSubmit}>
         <InputGroup className="mb-3">
           <InputGroup.Text>Task</InputGroup.Text>
           <FormControl
@@ -62,29 +56,18 @@ export default class AddTaskForm extends Component {
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Time</InputGroup.Text>
-          <FormControl
-            type="time"
-            onChange={this.onTimeChange}
-            required
-          />
+          <FormControl type="time" onChange={this.onTimeChange} required />
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Date</InputGroup.Text>
-          <FormControl
-            type="date"
-            onChange={this.onDateChange}
-            required
-          />
+          <FormControl type="date" onChange={this.onDateChange} required />
         </InputGroup>
-        <Form.Check
-          type="checkbox"
-          label="Reminder?"
-          id="reminder"
-          className="text-start"
-          value={this.state.reminder}
-          onChange={() => this.setState({ reminder: !this.state.reminder })}
+        <Button
+          variant="dark"
+          type="submit"
+          as="input"
+          value="Submit"
         />
-        <Button variant="dark" type="submit" as="input" value="Submit" onSubmit={this.onFormSubmit}/>
       </Form>
     );
   }
