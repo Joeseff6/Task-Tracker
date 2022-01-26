@@ -14,7 +14,7 @@ class Tasks extends React.Component {
     return (
       <Row className="taskItem">
         <Card
-          className={this.props.task.complete ? "bg-light completedTask" : "bg-light"}
+          className={this.props.task.complete ? "completedTask" : "bg-light"}
         >
           <Card.Body>
             <Card.Title>{this.props.task.task}</Card.Title>
