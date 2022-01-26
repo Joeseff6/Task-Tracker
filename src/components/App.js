@@ -45,7 +45,8 @@ const App = () => {
                 onClick={() => setAddTask(!addTask)}
                 className="mb-3"
               >
-                Add Task
+                
+                {addTask ? "View Tasks" : "Add Task"}
               </Button>
               {renderComponent()}
             </Card.Body>
