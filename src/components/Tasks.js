@@ -7,30 +7,32 @@ import "./Tasks.css";
 
 class Tasks extends React.Component {
   onCheckboxClick = (e) => {
-    db.tasks.update(this.props.task.id, {complete: e.target.checked});
-  }
+    db.tasks.update(this.props.task.id, { complete: e.target.checked });
+  };
 
   render() {
     return (
-      <Row className="taskItem">
-        <Card
-          className={this.props.task.complete ? "completedTask" : "bg-light"}
-        >
-          <Card.Body>
-            <Card.Title>{this.props.task.task}</Card.Title>
-            <Card.Text>
-              Date: {this.props.task.date} <br />
-              Time: {this.props.task.time} <br />
-              Completed?
-              <input
-                type="checkbox"
-                className="checkbox"
-                onChange={this.onCheckboxClick}
-                checked={this.props.task.complete ? true : false}
-              />
-            </Card.Text>
-          </Card.Body>
-        </Card>
+      <Row className="taskItem justify-content-center">
+        <Col md={8}>
+          <Card
+            className={this.props.task.complete ? "completedTask" : "bg-light"}
+          >
+            <Card.Body>
+              <Card.Title>{this.props.task.task}</Card.Title>
+              <Card.Text>
+                Date: {this.props.task.date} <br />
+                Time: {this.props.task.time} <br />
+                Completed?
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  onChange={this.onCheckboxClick}
+                  checked={this.props.task.complete ? true : false}
+                />
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
       </Row>
     );
   }
