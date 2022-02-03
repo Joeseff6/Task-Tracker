@@ -43,7 +43,7 @@ const App = () => {
                 variant={!addTask ? "success" : "warning"}
                 style={{ width: "150px", color: "black" }}
                 onClick={() => setAddTask(!addTask)}
-                className="mb-3"
+                className="mb-3 d-block m-auto"
               >
                 
                 {addTask ? "View Tasks" : "Add Task"}
