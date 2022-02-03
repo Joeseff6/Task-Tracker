@@ -8,10 +8,14 @@ class Tasks extends React.Component {
     db.tasks.update(this.props.task.id, { complete: e.target.checked });
   };
 
+  onRemoveButtonClick = () => {
+    db.tasks.delete(this.props.task.id);
+  }
+
   render() {
     return (
       <Card className={this.props.task.complete ? "completedTask" : "bg-light"}>
-        <button className="btn btn-danger">X</button>
+        <button className="btn btn-danger" onClick={this.onRemoveButtonClick}>X</button>
         <Card.Body>
           <Card.Title>{this.props.task.task}</Card.Title>
           <Card.Text>
