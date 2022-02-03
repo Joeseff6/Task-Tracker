@@ -1,6 +1,7 @@
 import "./TaskList.css";
 import React from "react";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Tasks from "./Tasks";
 import Spinner from "react-bootstrap/Spinner";
 import { db } from "../db/db";
@@ -28,9 +29,11 @@ const TaskList = () => {
     if (tasks.length) {
       return (
         <Row className="justify-content-center overflow-auto" id="taskList">
-          {tasks.map((task, index) => (
-            <Tasks task={task} key={task.id} index={index} />
-          ))}
+          <Col md={8}>
+            {tasks.map((task, index) => (
+              <Tasks task={task} key={task.id} index={index} />
+            ))}
+          </Col>
         </Row>
       );
     }
@@ -43,6 +46,6 @@ const TaskList = () => {
     }
   };
 
-  return tasks ? renderTasks() : "Please wait";
+  return tasks ? renderTasks() : "Fetching tasks";
 };
 export default TaskList;
