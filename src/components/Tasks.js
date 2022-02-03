@@ -1,6 +1,4 @@
 import React from "react";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import { db } from "../db/db";
 import "./Tasks.css";
