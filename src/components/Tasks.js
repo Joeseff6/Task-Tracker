@@ -5,7 +5,7 @@ import "./Tasks.css";
 
 class Tasks extends React.Component {
   onCheckboxClick = (e) => {
-    db.tasks.update(this.props.task.id, { complete: e.target.checked });
+    db.tasks.update(this.props.task.id, { complete: e.target.checked ? "true" : "false" });
   };
 
   onRemoveButtonClick = () => {
@@ -14,7 +14,7 @@ class Tasks extends React.Component {
 
   render() {
     return (
-      <Card className={this.props.task.complete ? "completedTask" : "bg-light"}>
+      <Card className={this.props.task.complete === "true" ? "completedTask" : "bg-light"}>
         <button className="btn btn-danger" onClick={this.onRemoveButtonClick}>X</button>
         <Card.Body>
           <Card.Title>{this.props.task.task}</Card.Title>
@@ -26,7 +26,6 @@ class Tasks extends React.Component {
               type="checkbox"
               className="checkbox"
               onChange={this.onCheckboxClick}
-              checked={this.props.task.complete ? true : false}
             />
           </Card.Text>
         </Card.Body>
