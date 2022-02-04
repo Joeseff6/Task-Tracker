@@ -47,6 +47,11 @@ const App = () => {
     setDefaultTask(selectedTask);
   };
 
+  const onToggleAddForm = () => {
+    setAddTask(!addTask);
+    setDefaultTask({});
+  }
+
   return (
     <Container fluid="md" className="mb-5">
       <header>
@@ -63,7 +68,7 @@ const App = () => {
               <Button
                 variant={addTask ? "warning" : "success"}
                 style={{ width: "150px", color: "black" }}
-                onClick={() => setAddTask(!addTask)}
+                onClick={onToggleAddForm}
                 className="mb-3 mx-3 m-auto"
               >
                 {addTask ? "View Tasks" : "Add Task"}
