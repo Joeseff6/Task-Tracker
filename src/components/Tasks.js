@@ -26,6 +26,7 @@ class Tasks extends React.Component {
               type="checkbox"
               className="checkbox"
               onChange={this.onCheckboxClick}
+              checked={this.props.task.complete === "true" ? true : false}
             />
           </Card.Text>
         </Card.Body>
