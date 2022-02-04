@@ -77,7 +77,7 @@ const App = () => {
                 variant="danger"
                 style={{ width: "200px", color: "black" }}
                 className={
-                  completeArray.includes("true") ? "mb-3 mx-3 m-auto" : "d-none"
+                  !completeArray.includes("true") || addTask ? "d-none" : "mb-3 mx-3 m-auto" 
                 }
                 onClick={onClearButtonClick}
               >
