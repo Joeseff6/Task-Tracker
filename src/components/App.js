@@ -8,23 +8,23 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import AddTaskForm from "./AddTaskForm";
 import TaskList from "./TaskList";
-
+import { db } from "../db/db";
 
 const App = () => {
   const [addTask, setAddTask] = useState(false);
-  
+
   const onFormSubmit = () => {
     setAddTask(false);
   };
 
   const renderComponent = () => {
-    return addTask ? (
-      <AddTaskForm onFormSubmit={onFormSubmit} />
-    ) : (
-      <TaskList />
-    );
+    return addTask ? <AddTaskForm onFormSubmit={onFormSubmit} /> : <TaskList />;
   };
 
+  const onClearButtonClick = async (e) => {
+    const completedTasks = await db.tasks.where("complete").equals("true").toArray();
+    console.log(completedTasks);
+  };
 
   return (
     <Container fluid="md" className="mb-5">
@@ -43,10 +43,18 @@ const App = () => {
                 variant={!addTask ? "success" : "warning"}
                 style={{ width: "150px", color: "black" }}
                 onClick={() => setAddTask(!addTask)}
-                className="mb-3 d-block m-auto"
+                className="mb-3 mx-3 m-auto"
               >
-                
                 {addTask ? "View Tasks" : "Add Task"}
+              </Button>
+
+              <Button
+                variant={!addTask ? "success" : "warning"}
+                style={{ width: "200px", color: "black" }}
+                className="mb-3 mx-3 m-auto"
+                onClick={onClearButtonClick}
+              >
+                Clear Completed Tasks
               </Button>
               {renderComponent()}
             </Card.Body>
