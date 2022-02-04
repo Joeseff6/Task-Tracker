@@ -12,12 +12,21 @@
   border: 2px solid #2CB549;
 }
 
-.btn-danger {
+.deleteTaskBtn {
   width: 30px;
   color: black;
   position: absolute;
   top: 5px;
   right: 5px;
   font-size: small;
+  padding: 0 0 0 0;
+}
+
+.editTaskBtn {
+  width: 100px;
+  color: black;
+  position: absolute;
+  top: 5px;
+  left: 5px;
   padding: 0 0 0 0;
 }
