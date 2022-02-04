@@ -13,6 +13,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 
 const App = () => {
   const [addTask, setAddTask] = useState(false);
+  const [defaultTask, setDefaultTask] = useState({});
   const tasks = useLiveQuery(() => db.tasks.toArray());
   let completeArray = [];
   tasks?.forEach((task) => completeArray.push(task.complete));
@@ -23,9 +24,9 @@ const App = () => {
 
   const renderComponent = () => {
     return addTask ? (
-      <AddTaskForm onFormSubmit={onFormSubmit} />
+      <AddTaskForm onFormSubmit={onFormSubmit} defaultTask={defaultTask} />
     ) : (
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onClickEditBtn={onClickEditBtn} />
     );
   };
 
@@ -39,6 +40,11 @@ const App = () => {
       taskIds.push(tasks.id);
     }
     db.tasks.bulkDelete(taskIds);
+  };
+
+  const onClickEditBtn = (selectedTask) => {
+    setAddTask(true);
+    setDefaultTask(selectedTask);
   };
 
   return (
@@ -55,18 +61,19 @@ const App = () => {
                 Add, remove, and update tasks!
               </Card.Subtitle>
               <Button
-                variant={!addTask ? "success" : "warning"}
+                variant={addTask ? "warning" : "success"}
                 style={{ width: "150px", color: "black" }}
                 onClick={() => setAddTask(!addTask)}
                 className="mb-3 mx-3 m-auto"
               >
                 {addTask ? "View Tasks" : "Add Task"}
               </Button>
-
               <Button
                 variant="danger"
                 style={{ width: "200px", color: "black" }}
-                className={completeArray.includes("true") ? "mb-3 mx-3 m-auto" : "d-none"}
+                className={
+                  completeArray.includes("true") ? "mb-3 mx-3 m-auto" : "d-none"
+                }
                 onClick={onClearButtonClick}
               >
                 Clear Completed Tasks
