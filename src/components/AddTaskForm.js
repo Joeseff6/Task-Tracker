@@ -10,6 +10,12 @@ import { db } from "../db/db";
 export default class AddTaskForm extends Component {
   state = { task: "", time: "", date: "" };
 
+  componentDidMount() {
+    if (this.props.defaultTask.task) {
+      this.setState({ task: this.props.defaultTask.task });
+    }
+  }
+
   onInputChange = (e) => {
     const str = e.target.value;
     if (str.length) {
@@ -32,14 +38,22 @@ export default class AddTaskForm extends Component {
 
   onFormSubmit = async (e) => {
     e.preventDefault();
-    await db.tasks.add({
-      task: this.state.task,
-      date: this.state.date,
-      time: this.state.time,
-      complete: false,
-    })
+    if (Object.keys(this.props.defaultTask).length) {
+      await db.tasks.update(this.props.defaultTask.id, {
+        task: this.state.task,
+        date: this.state.date,
+        time: this.state.time,
+      });
+    } else {
+      await db.tasks.add({
+        task: this.state.task,
+        date: this.state.date,
+        time: this.state.time,
+        complete: false,
+      });
+    }
     this.props.onFormSubmit();
-  }
+  };
 
   render() {
     return (
@@ -62,12 +76,7 @@ export default class AddTaskForm extends Component {
           <InputGroup.Text>Date</InputGroup.Text>
           <FormControl type="date" onChange={this.onDateChange} required />
         </InputGroup>
-        <Button
-          variant="dark"
-          type="submit"
-          as="input"
-          value="Submit"
-        />
+        <Button variant="dark" type="submit" as="input" value="Submit" />
       </Form>
     );
   }
