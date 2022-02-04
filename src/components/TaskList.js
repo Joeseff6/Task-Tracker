@@ -4,12 +4,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Tasks from "./Tasks";
 import Spinner from "react-bootstrap/Spinner";
-import { db } from "../db/db";
-import { useLiveQuery } from "dexie-react-hooks";
 
-const TaskList = () => {
-  const tasks = useLiveQuery(() => db.tasks.toArray());
-
+const TaskList = ({ tasks }) => {
   const renderTasks = () => {
     if (tasks[0] === "Loading") {
       return (
