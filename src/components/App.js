@@ -9,24 +9,35 @@ import Button from "react-bootstrap/Button";
 import AddTaskForm from "./AddTaskForm";
 import TaskList from "./TaskList";
 import { db } from "../db/db";
+import { useLiveQuery } from "dexie-react-hooks";
 
 const App = () => {
   const [addTask, setAddTask] = useState(false);
+  const tasks = useLiveQuery(() => db.tasks.toArray());
+  let completeArray = [];
+  tasks?.forEach((task) => completeArray.push(task.complete));
 
   const onFormSubmit = () => {
     setAddTask(false);
   };
 
   const renderComponent = () => {
-    return addTask ? <AddTaskForm onFormSubmit={onFormSubmit} /> : <TaskList />;
+    return addTask ? (
+      <AddTaskForm onFormSubmit={onFormSubmit} />
+    ) : (
+      <TaskList tasks={tasks} />
+    );
   };
 
   const onClearButtonClick = async (e) => {
-    let taskIds = []
-    const completedTasks = await db.tasks.where("complete").equals("true").toArray();
+    let taskIds = [];
+    const completedTasks = await db.tasks
+      .where("complete")
+      .equals("true")
+      .toArray();
     for (const tasks of completedTasks) {
       taskIds.push(tasks.id);
-    };
+    }
     db.tasks.bulkDelete(taskIds);
   };
 
@@ -55,7 +66,7 @@ const App = () => {
               <Button
                 variant={!addTask ? "success" : "warning"}
                 style={{ width: "200px", color: "black" }}
-                className="mb-3 mx-3 m-auto"
+                className={completeArray.includes("true") ? "mb-3 mx-3 m-auto" : "d-none"}
                 onClick={onClearButtonClick}
               >
                 Clear Completed Tasks
