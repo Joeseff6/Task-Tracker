@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Tasks from "./Tasks";
 import Spinner from "react-bootstrap/Spinner";
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks, onClickEditBtn }) => {
   const renderTasks = () => {
     if (tasks[0] === "Loading") {
       return (
@@ -27,7 +27,7 @@ const TaskList = ({ tasks }) => {
         <Row className="justify-content-center overflow-auto" id="taskList">
           <Col md={8}>
             {tasks.map((task, index) => (
-              <Tasks task={task} key={task.id} index={index} />
+              <Tasks task={task} key={task.id} index={index} onClickEditBtn={onClickEditBtn}/>
             ))}
           </Col>
         </Row>
