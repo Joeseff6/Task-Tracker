@@ -64,7 +64,7 @@ const App = () => {
               </Button>
 
               <Button
-                variant={!addTask ? "success" : "warning"}
+                variant="danger"
                 style={{ width: "200px", color: "black" }}
                 className={completeArray.includes("true") ? "mb-3 mx-3 m-auto" : "d-none"}
                 onClick={onClearButtonClick}
