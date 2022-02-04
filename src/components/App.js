@@ -22,8 +22,12 @@ const App = () => {
   };
 
   const onClearButtonClick = async (e) => {
+    let taskIds = []
     const completedTasks = await db.tasks.where("complete").equals("true").toArray();
-    console.log(completedTasks);
+    for (const tasks of completedTasks) {
+      taskIds.push(tasks.id);
+    };
+    db.tasks.bulkDelete(taskIds);
   };
 
   return (
