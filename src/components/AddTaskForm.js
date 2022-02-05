@@ -3,10 +3,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
-import formatDate from "../helper/formatDate";
-import formatTime from "../helper/formatTime";
 import { db } from "../db/db";
-
 export default class AddTaskForm extends Component {
   state = { task: "", time: "", date: "" };
 
@@ -24,16 +21,6 @@ export default class AddTaskForm extends Component {
     } else {
       this.setState({ task: "" });
     }
-  };
-
-  onDateChange = (e) => {
-    const formattedDate = formatDate(e);
-    this.setState({ date: formattedDate });
-  };
-
-  onTimeChange = (e) => {
-    const formattedTime = formatTime(e);
-    this.setState({ time: formattedTime });
   };
 
   onFormSubmit = async (e) => {
@@ -70,11 +57,11 @@ export default class AddTaskForm extends Component {
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Time</InputGroup.Text>
-          <FormControl type="time" onChange={this.onTimeChange} required />
+          <FormControl type="time" onChange={(e) => this.setState({ time: e.target.value })} required />
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Date</InputGroup.Text>
-          <FormControl type="date" onChange={this.onDateChange} required />
+          <FormControl type="date" onChange={(e) => this.setState({ date: e.target.value })} required />
         </InputGroup>
         <Button variant="dark" type="submit" as="input" value="Submit" />
       </Form>
