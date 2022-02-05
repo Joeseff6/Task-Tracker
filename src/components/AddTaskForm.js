@@ -8,7 +8,7 @@ export default class AddTaskForm extends Component {
   state = { task: "", time: "", date: "" };
 
   componentDidMount() {
-    if (this.props.defaultTask) {
+    if (Object.keys(this.props.defaultTask).length) {
       this.setState({
         task: this.props.defaultTask.task,
         date: this.props.defaultTask.date,
