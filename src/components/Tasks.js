@@ -1,6 +1,8 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { db } from "../db/db";
+import formatDate from "../helper/formatDate";
+import formatTime from "../helper/formatTime";
 import "./Tasks.css";
 
 class Tasks extends React.Component {
@@ -20,8 +22,8 @@ class Tasks extends React.Component {
         <Card.Body>
           <Card.Title>{this.props.task.task}</Card.Title>
           <Card.Text>
-            Date: {this.props.task.date} <br />
-            Time: {this.props.task.time} <br />
+            Date: {formatDate(this.props.task.date)} <br />
+            Time: {formatTime(this.props.task.time)} <br />
             Completed?
             <input
               type="checkbox"
