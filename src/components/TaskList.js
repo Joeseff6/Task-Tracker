@@ -12,7 +12,12 @@ const TaskList = ({ tasks, onClickEditBtn }) => {
         <Row className="justify-content-center overflow-auto" id="taskList">
           <Col lg={8}>
             {tasks.map((task, index) => (
-              <Tasks task={task} key={task.id} index={index} onClickEditBtn={onClickEditBtn}/>
+              <Tasks
+                task={task}
+                key={task.id}
+                index={index}
+                onClickEditBtn={onClickEditBtn}
+              />
             ))}
           </Col>
         </Row>
@@ -27,6 +32,10 @@ const TaskList = ({ tasks, onClickEditBtn }) => {
     }
   };
 
-  return tasks ? renderTasks() : <Spinner className="d-block m-auto" animation="border" role="status" />;
+  return tasks ? (
+    renderTasks()
+  ) : (
+    <Spinner className="d-block m-auto" animation="border" role="status" />
+  );
 };
 export default TaskList;

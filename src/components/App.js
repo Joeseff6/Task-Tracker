@@ -42,7 +42,7 @@ const App = () => {
   const onToggleAddForm = () => {
     setAddTask(!addTask);
     setDefaultTask({});
-  }
+  };
 
   const renderComponent = () => {
     return addTask ? (
@@ -77,7 +77,9 @@ const App = () => {
                 variant="danger"
                 style={{ width: "200px", color: "black" }}
                 className={
-                  !completeArray.includes("true") || addTask ? "d-none" : "mb-3 mx-3 m-auto" 
+                  !completeArray.includes("true") || addTask
+                    ? "d-none"
+                    : "mb-3 mx-3 m-auto"
                 }
                 onClick={onClearButtonClick}
               >

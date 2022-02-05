@@ -7,18 +7,34 @@ import formatTime from "../helper/formatTime";
 
 class Tasks extends React.Component {
   onCheckboxClick = (e) => {
-    db.tasks.update(this.props.task.id, { complete: e.target.checked ? "true" : "false" });
+    db.tasks.update(this.props.task.id, {
+      complete: e.target.checked ? "true" : "false",
+    });
   };
 
   onRemoveButtonClick = () => {
     db.tasks.delete(this.props.task.id);
-  }
+  };
 
   render() {
     return (
-      <Card className={this.props.task.complete === "true" ? "completedTask" : "bg-light"}>
-        <button className="btn btn-danger deleteTaskBtn" onClick={this.onRemoveButtonClick}>X</button>
-        <button className="btn btn-warning editTaskBtn" onClick={() => this.props.onClickEditBtn(this.props.task)}>Edit Task</button>
+      <Card
+        className={
+          this.props.task.complete === "true" ? "completedTask" : "bg-light"
+        }
+      >
+        <button
+          className="btn btn-danger deleteTaskBtn"
+          onClick={this.onRemoveButtonClick}
+        >
+          X
+        </button>
+        <button
+          className="btn btn-warning editTaskBtn"
+          onClick={() => this.props.onClickEditBtn(this.props.task)}
+        >
+          Edit Task
+        </button>
         <Card.Body>
           <Card.Title>{this.props.task.task}</Card.Title>
           <Card.Text>
