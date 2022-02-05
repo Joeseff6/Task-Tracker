@@ -13,7 +13,6 @@ _So that I can track my current short term tasks_
 
 - [x] User will be presented with existing tasks if available
 - [x] User will be able to open a form upon clicking an "Add Form" button
-- [ ] User will be able to edit/delete tasks
+- [x] User will be able to edit/delete tasks
 - [ ] Tasks will be sorted by date and time order
 - [x] Tasks will be stored locally on the user's machine
-- [ ] Application will be responsive in both Desktop and Mobile resolutions
