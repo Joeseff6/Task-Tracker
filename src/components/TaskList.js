@@ -7,25 +7,10 @@ import Spinner from "react-bootstrap/Spinner";
 
 const TaskList = ({ tasks, onClickEditBtn }) => {
   const renderTasks = () => {
-    if (tasks[0] === "Loading") {
-      return (
-        <Row className="justify-content-center">
-          <Spinner animation="border" role="status" />
-          <span className="fs-3">Fetching tasks...</span>
-        </Row>
-      );
-    }
-    if (tasks[0] === "Error") {
-      return (
-        <Row className="text-center fs-3">
-          <span className="fs-3">Error, couldn't reach the server</span>
-        </Row>
-      );
-    }
     if (tasks.length) {
       return (
         <Row className="justify-content-center overflow-auto" id="taskList">
-          <Col md={8}>
+          <Col lg={8}>
             {tasks.map((task, index) => (
               <Tasks task={task} key={task.id} index={index} onClickEditBtn={onClickEditBtn}/>
             ))}
@@ -42,6 +27,6 @@ const TaskList = ({ tasks, onClickEditBtn }) => {
     }
   };
 
-  return tasks ? renderTasks() : "Fetching tasks";
+  return tasks ? renderTasks() : <Spinner className="d-block m-auto" animation="border" role="status" />;
 };
 export default TaskList;
