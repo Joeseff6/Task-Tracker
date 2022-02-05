@@ -14,7 +14,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 const App = () => {
   const [addTask, setAddTask] = useState(false);
   const [defaultTask, setDefaultTask] = useState({});
-  const tasks = useLiveQuery(() => db.tasks.toArray());
+  const tasks = useLiveQuery(() => db.tasks.orderBy("date").toArray());
   let completeArray = [];
   tasks?.forEach((task) => completeArray.push(task.complete));
 
