@@ -22,14 +22,6 @@ const App = () => {
     setAddTask(false);
   };
 
-  const renderComponent = () => {
-    return addTask ? (
-      <AddTaskForm onFormSubmit={onFormSubmit} defaultTask={defaultTask} />
-    ) : (
-      <TaskList tasks={tasks} onClickEditBtn={onClickEditBtn} />
-    );
-  };
-
   const onClearButtonClick = async (e) => {
     let taskIds = [];
     const completedTasks = await db.tasks
@@ -51,6 +43,14 @@ const App = () => {
     setAddTask(!addTask);
     setDefaultTask({});
   }
+
+  const renderComponent = () => {
+    return addTask ? (
+      <AddTaskForm onFormSubmit={onFormSubmit} defaultTask={defaultTask} />
+    ) : (
+      <TaskList tasks={tasks} onClickEditBtn={onClickEditBtn} />
+    );
+  };
 
   return (
     <Container fluid="md" className="mb-5">
