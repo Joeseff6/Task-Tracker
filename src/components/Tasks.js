@@ -1,9 +1,9 @@
+import "./Tasks.css";
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { db } from "../db/db";
 import formatDate from "../helper/formatDate";
 import formatTime from "../helper/formatTime";
-import "./Tasks.css";
 
 class Tasks extends React.Component {
   onCheckboxClick = (e) => {
