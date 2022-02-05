@@ -1,5 +1,5 @@
-const formatTime = (event) => {
-  const timeArr = event.target.value.split(":");
+const formatTime = (time) => {
+  const timeArr = time.split(":");
   const [hour, minute] = timeArr;
   if (parseInt(hour) === 0) return `12:${minute} AM`;
   if (parseInt(hour) === 12) return `${parseInt(hour)}:${minute} PM`;
