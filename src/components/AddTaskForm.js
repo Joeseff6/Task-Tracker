@@ -8,8 +8,12 @@ export default class AddTaskForm extends Component {
   state = { task: "", time: "", date: "" };
 
   componentDidMount() {
-    if (this.props.defaultTask.task) {
-      this.setState({ task: this.props.defaultTask.task });
+    if (this.props.defaultTask) {
+      this.setState({
+        task: this.props.defaultTask.task,
+        date: this.props.defaultTask.date,
+        time: this.props.defaultTask.time,
+      });
     }
   }
 
@@ -57,11 +61,21 @@ export default class AddTaskForm extends Component {
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Time</InputGroup.Text>
-          <FormControl type="time" onChange={(e) => this.setState({ time: e.target.value })} required />
+          <FormControl
+            type="time"
+            onChange={(e) => this.setState({ time: e.target.value })}
+            value={this.state.time}
+            required
+          />
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>Date</InputGroup.Text>
-          <FormControl type="date" onChange={(e) => this.setState({ date: e.target.value })} required />
+          <FormControl
+            type="date"
+            onChange={(e) => this.setState({ date: e.target.value })}
+            value={this.state.date}
+            required
+          />
         </InputGroup>
         <Button variant="dark" type="submit" as="input" value="Submit" />
       </Form>
