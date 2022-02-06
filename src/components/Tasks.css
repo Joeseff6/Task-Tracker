@@ -1,4 +1,5 @@
-.card.bg-light, .completedTask {
+.card.bg-light,
+.completedTask {
   height: 150px;
   position: relative;
 }
@@ -8,8 +9,8 @@
 }
 
 .completedTask {
-  background-color: #9DE7AD;
-  border: 2px solid #2CB549;
+  background-color: #9de7ad;
+  border: 2px solid #2cb549;
 }
 
 .deleteTaskBtn {
@@ -29,4 +30,10 @@
   top: 5px;
   left: 5px;
   padding: 0 0 0 0;
+}
+
+@media screen and (max-width: 520px) {
+  .card-body {
+    padding-top: 40px;
+  }
 }
