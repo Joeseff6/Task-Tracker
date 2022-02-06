@@ -5,7 +5,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import { db } from "../db/db";
 export default class AddTaskForm extends Component {
-  state = { task: "", time: "", date: "" };
+  state = { task: "", time: "", date: "", charCount: 0 };
 
   componentDidMount() {
     if (Object.keys(this.props.defaultTask).length) {
@@ -13,6 +13,7 @@ export default class AddTaskForm extends Component {
         task: this.props.defaultTask.task,
         date: this.props.defaultTask.date,
         time: this.props.defaultTask.time,
+        charCount: this.props.defaultTask.task.length,
       });
     }
   }
@@ -21,9 +22,9 @@ export default class AddTaskForm extends Component {
     const str = e.target.value;
     if (str.length) {
       const capitalizedString = str[0].toUpperCase() + str.slice(1, str.length);
-      this.setState({ task: capitalizedString });
+      this.setState({ task: capitalizedString, charCount: e.target.value.length });
     } else {
-      this.setState({ task: "" });
+      this.setState({ task: "", charCount: 0 });
     }
   };
 
@@ -50,7 +51,7 @@ export default class AddTaskForm extends Component {
     return (
       <Form className="mb-3 col-sm-9 mx-auto" onSubmit={this.onFormSubmit}>
         <InputGroup className="mb-3">
-          <InputGroup.Text>Task</InputGroup.Text>
+          <InputGroup.Text>Task ({this.state.charCount}/50)</InputGroup.Text>
           <FormControl
             placeholder="Do the dishes"
             type="text"
