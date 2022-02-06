@@ -1,6 +1,6 @@
 .card.bg-light,
 .completedTask {
-  height: 150px;
+  height: 175px;
   position: relative;
 }
 
@@ -32,8 +32,6 @@
   padding: 0 0 0 0;
 }
 
-@media screen and (max-width: 520px) {
-  .card-body {
-    padding-top: 40px;
-  }
+.card-body {
+  padding-top: 40px;
 }
