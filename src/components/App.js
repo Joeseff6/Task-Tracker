@@ -57,9 +57,9 @@ const App = () => {
       <header>
         <h1 className="text-center">Task Tracker</h1>
       </header>
-      <Row>
-        <Col className="d-flex justify-content-center">
-          <Card className="col-9">
+      <Row className="justify-content-center">
+        <Col sm={9}>
+          <Card>
             <Card.Body className="text-center">
               <Card.Title className="fs-1 mb-4">Your Task List</Card.Title>
               <Card.Subtitle className="fs-5 mb-3">
