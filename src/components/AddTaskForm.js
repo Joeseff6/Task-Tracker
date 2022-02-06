@@ -56,6 +56,7 @@ export default class AddTaskForm extends Component {
             type="text"
             value={this.state.task}
             onChange={this.onInputChange}
+            maxLength="50"
             required
           />
         </InputGroup>
