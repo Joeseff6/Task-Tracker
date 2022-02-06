@@ -10,7 +10,7 @@ const TaskList = ({ tasks, onClickEditBtn }) => {
     if (tasks.length) {
       return (
         <Row className="justify-content-center overflow-auto" id="taskList">
-          <Col lg={8}>
+          <Col lg={6}>
             {tasks.map((task, index) => (
               <Tasks
                 task={task}
